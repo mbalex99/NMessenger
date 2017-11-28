@@ -199,6 +199,9 @@ open class MessageGroup: GeneralMessengerCell {
                 //Need to set height in cell node as of ASDK 2.x
                 self.frame.size.height = context.finalFrame(for: self.messageTable).size.height + self.cellPadding.bottom + self.cellPadding.top
                 
+                //fix layout issues
+                self.setNeedsLayout()
+                
                 //wait for layout animation
                 let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(self.animationDelay)*1000 * Int64(NSEC_PER_MSEC)) / Double(NSEC_PER_SEC)
                 DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
