@@ -429,7 +429,7 @@ open class CameraViewController: UIImagePickerController, UIImagePickerControlle
     open func requestPhotoLibraryPermissions(_ completion: @escaping (_ granted : Bool) -> Void) {
         PHPhotoLibrary.requestAuthorization { status in
             switch status {
-                case .authorized: completion(true)
+                case .authorized, .limited: completion(true)
                 case .denied, .notDetermined, .restricted : completion(false)
             }
         }
